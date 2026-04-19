@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 // Serve static files (IMPORTANT)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // Products API
 app.get('/products', (req, res) => {
