@@ -18,7 +18,7 @@ app.get('/products', (req, res) => {
 
 // Fallback (IMPORTANT FIX)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 app.listen(PORT, () => {
