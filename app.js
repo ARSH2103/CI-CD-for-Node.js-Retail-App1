@@ -1,24 +1,22 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
+
 const PORT = 3000;
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'Public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ FORCE root route to load index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
-});
+// Sample products
+const products = [
+    { id: 1, name: "Laptop", price: 50000 },
+    { id: 2, name: "Phone", price: 20000 },
+    { id: 3, name: "Headphones", price: 2000 }
+];
 
 // API route
 app.get('/products', (req, res) => {
-    res.json([
-        { id: 1, name: "Laptop", price: 50000 },
-        { id: 2, name: "Phone", price: 20000 },
-        { id: 3, name: "Headphones", price: 2000 }
-    ]);
+    res.json(products);
 });
 
 // Start server
