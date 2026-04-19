@@ -4,19 +4,15 @@ const app = express();
 
 const PORT = 3000;
 
-// Serve static files
+// Serve frontend
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Sample products
-const products = [
-    { id: 1, name: "Laptop", price: 50000 },
-    { id: 2, name: "Phone", price: 20000 },
-    { id: 3, name: "Headphones", price: 2000 }
-];
 
 // API route
 app.get('/products', (req, res) => {
-    res.json(products);
+    res.json([
+        { id: 1, name: "Laptop", price: 50000 },
+        { id: 2, name: "Phone", price: 20000 }
+    ]);
 });
 
 // Start server
