@@ -1,19 +1,11 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
+
 const PORT = 3000;
 
-// Middleware
-app.use(express.json());
-
-// Serve static frontend
+// Serve frontend
 app.use(express.static(path.join(__dirname, 'public')));
-
-// ✅ Root route fallback (important fix)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 // API route
 app.get('/products', (req, res) => {
