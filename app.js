@@ -4,10 +4,15 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Serve static files (IMPORTANT)
+// Serve static files
 app.use(express.static(path.join(__dirname, 'Public')));
 
-// Products API
+// ✅ FORCE root route to load index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
+});
+
+// API route
 app.get('/products', (req, res) => {
     res.json([
         { id: 1, name: "Laptop", price: 50000 },
@@ -16,11 +21,7 @@ app.get('/products', (req, res) => {
     ]);
 });
 
-// Fallback (IMPORTANT FIX)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
-});
-
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
